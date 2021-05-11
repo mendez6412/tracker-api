@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Patch, Post } from "@nestjs/common";
 import { Habit } from "./habit.entity";
 import { CreateHabitDto, HabitsService } from "./habits.service";
 
@@ -11,7 +11,7 @@ export class HabitsController {
         return this.habitsService.create(createHabitDto);
     }
 
-    @Post(':id')
+    @Patch(':id')
     increment(@Param('id') id: number): Promise<Habit> {
         return this.habitsService.incrementHabitCount(id);
     }
